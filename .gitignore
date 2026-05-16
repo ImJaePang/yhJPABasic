@@ -1,0 +1,17 @@
+.gradle/
+**/build/
+**/out/
+.idea/
+**/.idea/
+
+# ⚠️ 범인 검거: H2 프로그램 설치 폴더 전체 제외
+h2/
+
+# H2 데이터베이스 데이터 파일 제외
+*.mv.db
+*.trace.db
+
+# 크래시 및 시스템 로그, PDF 제외
+*.log
+app_log.txt
+*.pdf
