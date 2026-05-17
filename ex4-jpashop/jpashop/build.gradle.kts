@@ -33,3 +33,10 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
 }
+
+// 컴파일된 클래스 폴더와 리소스 폴더의 경로를 하나로 통일
+sourceSets {
+    main {
+        output.setResourcesDir(java.classesDirectory)
+    }
+}
