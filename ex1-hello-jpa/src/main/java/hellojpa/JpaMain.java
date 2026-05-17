@@ -5,8 +5,6 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 
-import java.util.List;
-
 public class JpaMain {
     static void main(String[] args) {
 //        System.out.println("hello jpa");
