@@ -14,7 +14,6 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
-
     private LocalDateTime orderDate;
 
     @Enumerated(EnumType.STRING)
