@@ -11,6 +11,8 @@ public class Member {
 
     private String name;
     private  String city;
+    private  String street;
+    private String zipcode;
 
     public Member() {
     }
@@ -55,6 +57,4 @@ public class Member {
         this.zipcode = zipcode;
     }
 
-    private  String street;
-    private String zipcode;
 }
