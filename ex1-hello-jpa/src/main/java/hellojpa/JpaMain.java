@@ -15,28 +15,24 @@ public class JpaMain {
         tx.begin();
         try {
 
-            // 저장
-            Team team = new Team();
-            team.setName("TeamA");
-            em.persist(team);
-
             Member member = new Member();
-            member.setUsername("member1");
-            member.setTeam(team);
+            member.setUsername("helloUser");
             em.persist(member);
 
             em.flush();
             em.clear();
 
-            Member findMember = em.find(Member.class, member.getId());
-            Team findTeam = findMember.getTeam();
+            //
 
-            System.out.println("findTeamName : " + findTeam.getName());
+//            Member findMember = em.find(Member.class, member.getId());
+            Member findMember = em.getReference(Member.class, 1L);
+            System.out.println("findMember Class" + findMember.getClass());
+//            System.out.println("findeMember Id : " + findMember.getId());
+//            System.out.println("findeMember Name: " + findMember.getUsername());
 
-
-
-
-
+//            Member member = em.find(Member.class, 1L);
+//            printMember(member);
+//            printMemberAndTeam(member);
 
             tx.commit();
         } catch (Exception e){
@@ -47,7 +43,18 @@ public class JpaMain {
 
         emf.close();
 
+    }
 
+    private static void printMember(Member member) {
+        System.out.println("member : " + member.getUsername());
+    }
+
+    private static void printMemberAndTeam(Member member) {
+        String userName = member.getUsername();
+        System.out.println("userName : " + userName);
+
+        Team team = member.getTeam();
+        System.out.println("team : " + team.getName());
 
     }
 }
