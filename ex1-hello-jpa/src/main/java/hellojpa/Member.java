@@ -2,6 +2,8 @@ package hellojpa;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 
 public class Member {
@@ -13,12 +15,22 @@ public class Member {
     @Column(name = "USERNAME")
     private String username;
 
-//    @Column(name = "TEAM_ID")
-//    private Long teamId;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "TEAM_ID")
     private Team team;
+
+    // period
+    @Embedded
+    private Period workPeriod;
+//    private LocalDateTime startDate;
+//    private LocalDateTime endDate;
+
+    // address
+    @Embedded
+    private Address homeAddress;
+//    private String city;
+//    private String street;
+//    private String zipcode;
 
     public Member() {
     }
