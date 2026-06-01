@@ -14,27 +14,24 @@ public class JpaMain {
         EntityTransaction tx = em.getTransaction();
         tx.begin();
         try {
+            Member member = new Member();
+            member.setUsername("member1");
 
-            int a = 10;
-            int b = 10;
-            System.out.println("a == b : " + (a == b));
+            member.setHomeAddress(new Address("homeCity", "street", "10000"));
 
-            Address address1 = new Address("city", "street", "10000");
-            Address address2 = new Address("city", "street", "10000");
+            member.getFavoriteFoods().add("chicken");
+            member.getFavoriteFoods().add("porkchop");
+            member.getFavoriteFoods().add("beefSteak");
 
-            System.out.println(
-                    "address1 == address2 : "
-                    +
-                    (address1 == address2)
-            );
+            member.getAddressHistory().add(new Address("old1", "street1", "12345"));
+            member.getAddressHistory().add(new Address("old2", "street2", "23456"));
 
-            System.out.println(
-                    "address1.equals(address2) : "
-                    +
-                    (address1.equals(address2))
-            );
+            em.persist(member);
 
-
+            em.flush();
+            em.clear();
+            System.out.println("=====start=====");
+            em.find(Member.class, member.getId());
 
             tx.commit();
         } catch (Exception e){
