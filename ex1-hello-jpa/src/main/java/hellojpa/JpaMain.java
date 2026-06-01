@@ -31,7 +31,14 @@ public class JpaMain {
             em.flush();
             em.clear();
             System.out.println("=====start=====");
-            em.find(Member.class, member.getId());
+            Member findMember = em.find(Member.class, member.getId());
+            findMember.setHomeAddress(new Address("newCity", findMember.getHomeAddress().getStreet(), findMember.getHomeAddress().getZipcode()));
+
+            findMember.getFavoriteFoods().remove("chicken");
+            findMember.getFavoriteFoods().add("soyChicken");
+
+            findMember.getAddressHistory().remove(new Address("old1", "street1", "12345"));
+            findMember.getAddressHistory().add((new Address("newCity1", "street2", "23456")));
 
             tx.commit();
         } catch (Exception e){
