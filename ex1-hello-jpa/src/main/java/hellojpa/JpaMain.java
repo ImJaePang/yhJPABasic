@@ -15,19 +15,24 @@ public class JpaMain {
         tx.begin();
         try {
 
-            Address address = new Address("city", "street", "10000");
+            int a = 10;
+            int b = 10;
+            System.out.println("a == b : " + (a == b));
 
-            Member member = new Member();
-            member.setUsername("member1");
-            member.setHomeAddress(address);
+            Address address1 = new Address("city", "street", "10000");
+            Address address2 = new Address("city", "street", "10000");
 
-            em.persist(member);
+            System.out.println(
+                    "address1 == address2 : "
+                    +
+                    (address1 == address2)
+            );
 
-            Address newAddress = new Address("Newcity", address.getStreet(), address.getZipcode());
-
-            member.setHomeAddress(newAddress);
-            em.persist(member);
-
+            System.out.println(
+                    "address1.equals(address2) : "
+                    +
+                    (address1.equals(address2))
+            );
 
 
 
