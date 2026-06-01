@@ -32,6 +32,22 @@ public class Member {
 //    private String street;
 //    private String zipcode;
 
+    public Address getHomeAddress() {
+        return homeAddress;
+    }
+
+    public void setHomeAddress(Address homeAddress) {
+        this.homeAddress = homeAddress;
+    }
+
+    public Period getWorkPeriod() {
+        return workPeriod;
+    }
+
+    public void setWorkPeriod(Period workPeriod) {
+        this.workPeriod = workPeriod;
+    }
+
     public Member() {
     }
 
@@ -60,6 +76,11 @@ public class Member {
 
         team.getMembers().add(this);
     }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
 //    public Long getTeamId() {
 //        return teamId;
 //    }

@@ -15,25 +15,18 @@ public class JpaMain {
         tx.begin();
         try {
 
-            // 저장
-            Team team = new Team();
-            team.setName("TeamA");
-            em.persist(team);
+            Address address = new Address("city", "street", "10000");
 
             Member member = new Member();
             member.setUsername("member1");
-            member.setTeam(team);
+            member.setHomeAddress(address);
+
             em.persist(member);
 
-            em.flush();
-            em.clear();
+            Address newAddress = new Address("Newcity", address.getStreet(), address.getZipcode());
 
-            Member findMember = em.find(Member.class, member.getId());
-            Team findTeam = findMember.getTeam();
-
-            System.out.println("findTeamName : " + findTeam.getName());
-
-
+            member.setHomeAddress(newAddress);
+            em.persist(member);
 
 
 
