@@ -1,14 +1,14 @@
 package hellojpa;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "ADDRESS")
 public class AddressHistory {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
+    @Column(name = "HISTORY_ID")
     private Long Id;
 
     private Address address;
