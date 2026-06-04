@@ -48,6 +48,8 @@ public class Member {
         this.homeAddress = homeAddress;
     }
 
+    public Member() {
+    }
     public Period getWorkPeriod() {
         return workPeriod;
     }
@@ -56,8 +58,6 @@ public class Member {
         this.workPeriod = workPeriod;
     }
 
-    public Member() {
-    }
 
     public Long getId() {
         return id;
