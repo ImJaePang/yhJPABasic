@@ -18,6 +18,15 @@ public class Member {
     public Member() {
     }
 
+    @Override
+    public String toString() {
+        return "Member{" +
+                "Id=" + Id +
+                ", username='" + username + '\'' +
+                ", age=" + age +
+                '}';
+    }
+
     public Long getId() {
         return Id;
     }
