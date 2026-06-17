@@ -104,4 +104,18 @@ public class Member {
     public void setAddressHistory(List<Address> addressHistory) {
         this.addressHistory = addressHistory;
     }
+
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", team=" + team +
+                ", workPeriod=" + workPeriod +
+                ", homeAddress=" + homeAddress +
+                ", favoriteFoods=" + favoriteFoods +
+                ", addressHistory=" + addressHistory +
+                '}';
+    }
 }

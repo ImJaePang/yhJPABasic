@@ -25,16 +25,12 @@ public class JpaMain {
 
 //            TypedQuery<String> query2 =  em.createQuery("select m.username from Member m", String.class);
 //            Query queary3 =  em.createQuery("select m.username, m.age from Member m");
-            List<Member> resultlist =  em.createQuery("select m from Member m", Member.class)
-                    .setFirstResult(11)
-                    .setMaxResults(10)
+            List<String> result =  em.createQuery("select m.username from Member m", String.class)
                     .getResultList();
-            System.out.println("resultlist : " + resultlist.getFirst().toString());
 
-
-
-
-
+            for (String s : result) {
+                System.out.println("s : " + s);
+            }
 
             tx.commit();
         } catch (Exception e){

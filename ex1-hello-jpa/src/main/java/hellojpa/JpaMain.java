@@ -20,15 +20,38 @@ public class JpaMain {
         tx.begin();
         try {
 
-            // Critera - but noone use, QueryDSL (open source)
-//            CriteriaBuilder cb = em.getCriteriaBuilder();
-//            CriteriaQuery<Member> query = cb.createQuery(Member.class);
-//            Root<Member> m = query.from(Member.class);
-//            CriteriaQuery<Member> cq = query.select(m).where(cb.equal(m.get("username"), "kim"));
-//            List<Member> resultList = em.createQuery(cq).getResultList();
+            Team team1 = new Team();
+            team1.setName("팀1");
+            em.persist(team1);
 
-            // nativeQuery
-//            em.createNativeQuery("select MEMBER_ID, city, street, zipcode, USERNAME from MEMBER").getResultList();
+            Member member1 = new Member();
+            member1.setUsername("회원1");
+            member1.setTeam(team1);
+            em.persist(member1);
+
+            Member member2 = new Member();
+            member2.setUsername("회원2");
+            member2.setTeam(team1);
+            em.persist(member2);
+
+            em.flush();
+            em.clear();
+
+//            String query = "select m from Member m where m = :member";
+//            Member result = em.createQuery(query, Member.class)
+//                    .setParameter("member", member1)
+//                    .getSingleResult();
+
+            String query = "select m from Member m where m.team = :team";
+            List<Member> result = em.createQuery(query, Member.class)
+                    .setParameter("team", member1.getTeam())
+                    .getResultList();
+
+            for (Member member : result){
+                System.out.println("member : " + member);
+            }
+
+
 
 
 
