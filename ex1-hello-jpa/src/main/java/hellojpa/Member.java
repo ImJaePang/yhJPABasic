@@ -29,6 +29,8 @@ public class Member {
     @JoinColumn(name = "TEAM_ID")
     private Team team;
 
+    private int age;
+
     // period
     @Embedded
     private Period workPeriod;
@@ -111,6 +113,13 @@ public class Member {
         this.addressHistory = addressHistory;
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 
     @Override
     public String toString() {

@@ -27,26 +27,27 @@ public class JpaMain {
             Member member1 = new Member();
             member1.setUsername("회원1");
             member1.setTeam(team1);
+            member1.setAge(0);
             em.persist(member1);
 
             Member member2 = new Member();
             member2.setUsername("회원2");
             member2.setTeam(team1);
+            member2.setAge(0);
             em.persist(member2);
 
             em.flush();
             em.clear();
 
-            List<Member> result = em.createNamedQuery("Member.findByUsername", Member.class)
-                    .setParameter("username", member1.getUsername())
-                    .getResultList();
+            int resultCnt = em.createQuery("update Member m set m.age = 20")
+                            .executeUpdate();
 
-            for (Member member : result){
-                System.out.println("member : " + member);
-            }
+            System.out.println("resultCnt : " + resultCnt);
 
-
-
+            /* 벌크 연산은 영속성 컨텍스트를 무시하기 때문에
+            * 벌크를 먼저 실행하고 셀렉트 등을 하던지
+            * 벌크를 한 후에 영속성컨텍스트를 초기화 하던지 해야한다.
+            * */
 
 
 
